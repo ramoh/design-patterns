@@ -6,7 +6,7 @@ import java.util.Map;
 
 class ReportImporter implements Importer {
 
-    private static final String NAME_PREFIX = "Patient:";
+    private static final String NAME_PREFIX = "Patient: ";
 
     @Override
     public Document importFile(final File file) throws IOException {

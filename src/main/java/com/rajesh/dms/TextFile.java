@@ -26,7 +26,7 @@ class TextFile {
         final StringBuilder accumulator = new StringBuilder();
         int lineNumber;
 
-        for (lineNumber = start; lineNumber <= this.lines.size(); ++lineNumber) {
+        for (lineNumber = start; lineNumber < this.lines.size(); ++lineNumber) {
             final String line = lines.get(lineNumber);
 
             if (isEnd.test(line)) {

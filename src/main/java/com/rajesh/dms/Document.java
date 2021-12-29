@@ -1,13 +1,14 @@
 package com.rajesh.dms;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class Document {
+public final class Document {
 
     private final Map<String, String> attributes;
 
     Document(Map<String, String> attributes) {
-        this.attributes = attributes;
+        this.attributes = new HashMap<>(attributes);
     }
 
     public String getAttribute(final String attributeName) {

@@ -4,15 +4,20 @@ public class TestMain {
 
     public static void main(String[] args) {
 
-        Rule ruleSendEmailToSalesWhenCEO = RuleBuilder.when(facts -> "CEO".equals(facts.getFact("jobTitle")))
-                .then(facts -> {
-                    var name = facts.getFact("name");
-                    System.out.println("Sending mail to sales@company to follow up " + name);
-                });
-        Facts env = new Facts();
-        env.addFact("name", "Rajesh Mohanty");
+        var env = new Facts();
+        env.addFact("name", "Rajesh");
         env.addFact("jobTitle", "CEO");
 
-        ruleSendEmailToSalesWhenCEO.perform(env);
+        final var businessRuleEngine = new BusinessRuleEngine(env);
+
+        final Rule ruleSendMailToSale = RuleBuilder.when(facts -> "CEO".equals(facts.getFact("jobTitle")))
+                .andWhen(facts -> "Rajesh".equals(facts.getFact("name")))
+                .then(facts -> {
+                    var name = facts.getFact("name");
+                    System.out.println("Relevant Customer!!!" + name);
+                });
+
+        businessRuleEngine.addRules(ruleSendMailToSale);
+        businessRuleEngine.run();
     }
 }

@@ -1,18 +1,22 @@
 package com.rajesh.bre;
 
+import java.util.Arrays;
+import java.util.List;
+
 class DefaultRule implements Rule {
 
-    private final Condition condition;
+    private final List<Condition> conditions;
     private final Action action;
 
-    DefaultRule(Condition condition, Action action) {
-        this.condition = condition;
+    DefaultRule(Action action, Condition... conditions) {
+        this.conditions = Arrays.asList(conditions);
         this.action = action;
     }
 
     @Override
     public void perform(Facts facts) {
-        if (condition.evaluate(facts)) {
+        final boolean shoudlExecute = conditions.stream().allMatch(condition -> condition.evaluate(facts));
+        if (shoudlExecute) {
             action.execute(facts);
         }
     }

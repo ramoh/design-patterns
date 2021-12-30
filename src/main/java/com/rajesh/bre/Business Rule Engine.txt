@@ -1,0 +1,15 @@
+A Businss rule engine can support :
+    - Facts - Available information to which rules have access to
+    - Actions - operation you want to perfom 
+    - Conditions - these specify when an action should be trigerred
+    - Rules - These specify the business logic you want to execute, essentialy grouping facts,condition and actions together
+
+
+Condition
+    - A condition applied on certain facts that will evaluate to either true or false
+
+Action 
+    - A specific set of operations or code to execute
+
+Rule 
+    - This is conidtion and action together. Action only runs if action is true 
